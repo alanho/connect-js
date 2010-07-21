@@ -226,7 +226,11 @@ FB.provide('Content', {
       if (val !== null && val !== undefined) {
         var input = document.createElement('input');
         input.name = key;
-        input.value = val;
+        if (typeof val == "object"){
+          input.value = FB.JSON.stringify(val);
+        } else {
+          input.value = val;
+        }
         form.appendChild(input);
       }
     });
